@@ -1,4 +1,8 @@
-import calc from '/mine.js';
+const {calculate, z} = require('./mine');
 
-let number = calc();
+let number = calculate();
+
+
 console.log(number);
+console.log(z);
+
