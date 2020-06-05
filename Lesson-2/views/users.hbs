@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Node</title>
+    <title>Document</title>
 </head>
 <body>
-
-    <h1>
-      {{#if showed}}
-      Hello, {{name}}  
-      {{/if}}
-    </h1>
-
- 
+    
+    <li>
+      {{#each users}}
+      Name: {{this.name}}. Age: {{this.age}}
+      {{/each}}
+    </li>
 </body>
 </html>

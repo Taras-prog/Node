@@ -49,6 +49,17 @@ const path = require('path');
 
 const app = express();
 
+const users = [
+    {
+        name: 'Taras',
+        age: 25
+    },
+    {
+        name: 'Oleg',
+        age: 32
+    }
+];
+
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.json());
 app.use(express.urlencoded());
@@ -62,19 +73,22 @@ app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname,'views'))
 
 app.get('/', (req, res) => {
-    res.render('main')
+    res.render('main',{name: 'Taras', showed: true})
 });
 
-app.get('/hello', (req, res) => {
-    console.log(req);
-
-    // res.write('Hello Page-1');
-    // res.write('Hello Page-2');
-    // res.end();
-    res.json('Hello JSON')
+app.get('/users', (req, res) => {
+    res.render('users', {users})
 });
 
+app.get('/register', (req, res) => {
+    res.render('register')
+});
 
+app.post('/regis', (req, res) => {
+    console.log(req.body);
+    res.end();
+    
+})
 app.listen(5555, (err) => {
     if (err) {
         console.log(err);
