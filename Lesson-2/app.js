@@ -43,21 +43,43 @@
 
 // https://github.com/Taras-prog/Node.git
 
-
+const expressBars = require('express-handlebars');
 const express = require('express');
+
+
+const path = require('path');
 
 const app = express();
 
+app.use(express.static(path.join(__dirname, 'views', 'layouts')));
+app.use(express.json());
+app.use(express.urlencoded());
+
+app.engine('.hbs', expressBars({
+    extname: '.hbs'
+}));
+
+app.set('view engine', '.hbs');
+app.set('views', path.join(__dirname,'views'))
+
 app.get('/', (req, res) => {
+    res.render('main')
+});
+
+app.get('/hello', (req, res) => {
     console.log(req);
-    
+
+    // res.write('Hello Page-1');
+    // res.write('Hello Page-2');
+    // res.end();
+    res.json('Hello JSON')
 });
 
 
-app.listen(7777, (err) => {
+app.listen(5555, (err) => {
     if (err) {
         console.log(err);
     } else {
-        console.log('Listen 7777...');
+        console.log('Listen 5555...');
     }
 });
