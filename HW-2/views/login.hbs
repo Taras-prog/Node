@@ -1,0 +1,16 @@
+<main>
+    {{#if massage}}
+    <h1>{{massage}}</h1>
+    {{else}}
+    <h1>Login page</h1>
+    {{/if}}
+    <form action="/login" method="POST">
+    <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+    </div>
+    <button type="submit">Login</button>
+    </form>
+</main>
