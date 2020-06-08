@@ -16,7 +16,7 @@ module.exports = class User {
         
     }
     static findUser( email, password) {
-        return users.find(user.email == email && user.password == password);
+        return users.find(user => ( user.email == email && user.password == password))
     }
 
     static fetchAll() {

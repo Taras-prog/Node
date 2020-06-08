@@ -1,5 +1,9 @@
 <main>
-
+   {{#if massage}}
+    <h1>{{massage}}</h1>
+    {{else}}
+    <h1>Register page</h1>
+    {{/if}}
     <form action="/register" method="POST">
     <div>
         <label for="email">Email</label>

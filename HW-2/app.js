@@ -19,19 +19,29 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// app.get('/users', (req, res) => {
+//     const users = User.fetchAll();
+//     res.render('users', {users})
+// });
+
 app.get('/login', (req, res) => {
     res.render('login')
 });
 
-app.post('/login', (req, res) => {
+app.post('/login', (req, res, next) => {
     const {email, password} = req.body;
     const user = User.findUser(email, password);
     if (user){
-        res.redirect('users')
+        // res.redirect('users')
+        next();
     } else {
         res.render('login', {massage: 'Wrong data'})
     }
+}, (req, res) => {
+    const users = User.fetchAll();
+    res.render('users', {users})
 });
+
 
 app.get('/register', (req, res) => {
     res.render('register')
@@ -40,7 +50,16 @@ app.get('/register', (req, res) => {
 app.post('/register', (req, res) => {
     const {email, password} = req.body;
    const user = new User (email, password)
-    user.save();
+    const answer = user.save();
+    if(answer) {
+        res.redirect('login')
+    } else {
+        res.render ('register',{massage: 'Error in register'})
+    }
 });
 
-app.listen(3000, () => console.log('Listen 3000...'));
+app.use((req, res) => {
+    res.status(404).render('404')
+});
+
+app.listen(3001, () => console.log('Listen 3001...'));
