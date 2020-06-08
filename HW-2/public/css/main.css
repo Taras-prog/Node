@@ -1,4 +1,16 @@
 body {
     background-color: cadetblue;
-    color: red
+    color: red;
+    font-family: fantasy;
+}
+
+.footer {
+    background-color: black;
+    color: forestgreen;
+    width: 500px;
+    height: 100px;
+    text-align: center;
+    font-family: fantasy;
+    font-weight: 100;
+
 }
