@@ -2,23 +2,14 @@ const  {Router} = require('express');
 
 const userRouter = new Router();
 
-userRouter.get('/', (req, res) => {
-    res.json(' GET users')
-});
+const {userController} = require('../../controllers')
 
-userRouter.post('/', (req, res) => {
-    res.json('POST users')
-     console.log(req.body);
-});
+userRouter.get('/',(userController.getAllUsers))
 
-userRouter.put('/',  (req,res) => {
-    res.json(' PUT users')
-});
+userRouter.post('/',(userController.createUsers))
 
-userRouter.delete('/', (req, res) => {
-    const params = req.params
-    const query = req.query
-    res.json({params, query})
-});
+userRouter.put('/',(userController.updateUsers) )
+
+userRouter.delete('/', (userController.deleteUsers))
 
 module.exports = userRouter;
