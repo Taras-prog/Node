@@ -47,8 +47,8 @@ const expressBars = require('express-handlebars');
 const express = require('express');
 const path = require('path');
 
-const userRouter  = require('./routes/user/user.router');
-const productRouter = require('./routes/product/product.router')
+const {userRouter, productRouter}  = require('./routes');
+
 
 
 const app = express();
