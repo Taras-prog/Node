@@ -47,6 +47,10 @@ const expressBars = require('express-handlebars');
 const express = require('express');
 const path = require('path');
 
+const userRouter  = require('./routes/user/user.router');
+const productRouter = require('./routes/product/product.router')
+
+
 const app = express();
 
 const users = [
@@ -87,18 +91,10 @@ app.get('/register', (req, res) => {
 app.post('/regis', (req, res) => {
     console.log(req.body);
     res.end();
-    
-})
+});
 
-
-
-
-app.get('/users', (req, res) => {res.json(' GET users')})
-app.post('/users', (req, res) => {res.json('POST users')})
-app.put('/users', (req,res) => {res.json(' PUT users')})
-app.delete('/users/', (req, res) => {res.json('DELETE users')})
-
-
+app.use('/users', userRouter);
+app.use('/product', productRouter);
 
 
 app.listen(5555, (err) => {
