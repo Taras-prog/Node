@@ -5,7 +5,7 @@ module.exports = {
     getAllUsers: async (req, res) => {
     let users = await userService.getUsers();
         res.render('users', {users})
-        res.json(' GET users')
+        // res.json({users})
     },
 
     updateUsers:   (req,res) => {
@@ -13,11 +13,12 @@ module.exports = {
     },
 
     createUsers: async (req, res) => {
-        console.log(req.body);
+       
         await userService.createUser(req.body);
 
         res.redirect('/users')
     },
+
     
     deleteUsers:  (req, res) => {
         const params = req.params

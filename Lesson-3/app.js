@@ -21,6 +21,18 @@ const {userRouter, productRouter}  = require('./routes');
 app.use('/users', userRouter);
 app.use('/product', productRouter);
 
+app.get('/', (req, res) => {
+    res.render('main')
+})
+
+app.get('/register', (req, res) => {
+    res.render('register')
+});
+
+
+app.get('/login', (req, res) => {
+    res.render('login')
+})
 
 app.listen(5555, (err) => {
     if (err) {

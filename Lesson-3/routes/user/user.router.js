@@ -3,10 +3,11 @@ const  {Router} = require('express');
 const userRouter = new Router();
 
 const {userController} = require('../../controllers')
+const checUserValid = require('../../middlewares/user/chek-is-user-valid')
 
-userRouter.get('/',(userController.getAllUsers))
+userRouter.get('/',  (userController.getAllUsers))
 
-userRouter.post('/',(userController.createUsers))
+userRouter.post('/', checUserValid, (userController.createUsers))
 
 userRouter.put('/',(userController.updateUsers) )
 
