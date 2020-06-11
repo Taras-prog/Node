@@ -16,12 +16,10 @@ app.engine('.hbs', expressBars({
 
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname,'views'))
-
 const {userRouter, productRouter}  = require('./routes');
 
 app.use('/users', userRouter);
 app.use('/product', productRouter);
-
 
 app.get('/', (req, res) => {
     res.render('main')
