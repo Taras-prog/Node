@@ -1,9 +1,22 @@
-const express = require('express')
+const express = require('express');
+
+const {productRouter}  = require('./routes');
+ 
+
 const app = express()
 
-app.use(express.json)
-const port = 3000
+app.use(express.json())
+app.use(express.urlencoded())
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.use('/product', productRouter());
 
-app.listen(port, (err)=> console.log(`Listen 3000...`))
+
+
+
+app.listen(4444, (err) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log('Listen 4444...');
+    }
+});
