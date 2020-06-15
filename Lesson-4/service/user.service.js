@@ -12,7 +12,7 @@ class UserService {
         return new Promise((resolve, reject) => {
             readFile(usersPath, (error, JSONUsers) => {
                 if (error) {
-                    reject('Cant read file (')
+                    reject('Cant read file ')
                 }
 
                 let JSONArr = JSONUsers.toString().split('\n');

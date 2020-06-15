@@ -1,2 +1,6 @@
 
-{"name":"Taras","age":25}
+{"name":"Тарас Гудыменко","age":"25","email":"tarascr7@gmail.com","password":"tarascr777"}
+{"name":"Anton","age":"33","email":"antonir@gmail.com","password":"123141242414"}
+{"name":"Тарас Гудыменко","age":"34","email":"attgtgnir@gmail.com","password":"123141242414"}
+{"name":"Тарас Гудыменко","age":"12","email":"attgtgnir@gmail.com","password":"123141242414"}
+{"name":"Тарас Гудыменко","age":"22","email":"attgtgnir@gmail.com","password":"123141242414"}

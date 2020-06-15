@@ -1,6 +1,7 @@
 const expressBars = require('express-handlebars');
 const express = require('express');
 const path = require('path');
+const connection = require('./dataBase')
 
 const app = express();
 
@@ -16,10 +17,12 @@ app.engine('.hbs', expressBars({
 
 app.set('view engine', '.hbs');
 app.set('views', path.join(__dirname,'views'))
+
 const {userRouter, productRouter}  = require('./routes');
 
 app.use('/users', userRouter);
 app.use('/product', productRouter);
+
 
 app.get('/', (req, res) => {
     res.render('main')
@@ -34,10 +37,17 @@ app.get('/login', (req, res) => {
     res.render('login')
 })
 
-app.listen(5555, (err) => {
+
+app.post('/mysql', (req, res) => {
+    connection.query('SELECT * FROM users', (err,results) => {
+        console.log(results);
+        
+    })
+})
+app.listen(4444, (err) => {
     if (err) {
         console.log(err);
     } else {
-        console.log('Listen 5555...');
+        console.log('Listen 4444...');
     }
 });
