@@ -39,8 +39,13 @@ app.get('/login', (req, res) => {
 
 
 app.post('/mysql', (req, res) => {
+    connection.query(`INSERT INTO users (name, email, password) VALUES ('${req.body.name}', '${req.body.email}', '${req.body.password}')`, (err, ok) => {
+        console.log(ok);
+    })
+
+   
     connection.query('SELECT * FROM users', (err,results) => {
-        console.log(results);
+        res.json(results)
         
     })
 })
